@@ -1,5 +1,6 @@
 import java.util.Scanner;
-
+import java.util.Arrays;
+import java.util.Random;
 public class Main {
     /**
      * Объявите переменные типа int, byte, short, long, float, double, char, boolean.
@@ -163,22 +164,62 @@ public class Main {
         System.out.println("Месяц " + month + ", сумма накоплений равна " + rublesInWallet +" рублей");
     }
 
+    public static void task1 () {
+        System.out.println("Задача 1");
+        int size = 10;
+        int[] array = new int[size];
+
+        Random random = new Random();
+
+        for (int i = 0; i < array.length; i++) {
+            array[i] = random.nextInt(-100,100);
+        }
+
+        System.out.println(Arrays.toString(array));
+    }
+
+    public static void task2 () {
+        System.out.println("Задача 2");
+
+        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] % 2 != 0) {
+                System.out.println(array[i]);
+            }
+        }
+
+    }
+
+    public static double task3 () {
+        System.out.println("Задача 3");
+
+        double[] array = {0.1, 0.2, 0.3, 0.4, 0.5, 0.6};
+        double sum = 0;
+        for (double num : array) {
+            sum += num;
+        }
+        return sum;
+    }
+
+    public static String[] task4 () {
+        System.out.println("Задача 4");
+        String[] array = {"ab", "cd", "ef", "gh", "ij"};
+        return array;
+    }
+
+    static String concat (String[] stringArray) {
+        String concatenated = "";
+        for (String str : stringArray) {
+            concatenated += str;
+        }
+        return concatenated;
+    }
+
     public static void main(String[] args) {
-        System.out.println("First Task:\n");
-        firstTask();
-        System.out.println("\n\n\nSecond Task:\n");
-        secondTask();
-        System.out.println("\n\n\nThird Task:\n");
-        thirdTask();
-        System.out.println("\n\n\nForth Task:\n");
-        forthTask();
-        System.out.println("\n\n\nFifth Task:\n");
-        fifthTask();
-        System.out.println("\n\n\nSixth Task:\n");
-        sixthTask();
-        System.out.println("\n\n\nSeventh Task:\n");
-        seventhTask();
-        System.out.println("\n\n\nEight Task:\n");
-        eightTask();
+        task1();
+        task2();
+        System.out.println(task3());
+        System.out.println(concat(task4()));
     }
 }
