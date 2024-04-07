@@ -1,7 +1,9 @@
+package Less1_4;
+
 import java.util.Scanner;
 import java.util.Arrays;
 import java.util.Random;
-public class Main {
+public class Less1_4 {
     /**
      * Объявите переменные типа int, byte, short, long, float, double, char, boolean.
      *
@@ -208,6 +210,130 @@ public class Main {
         return array;
     }
 
+    public static int sum_recursion(int n) {
+        if (n == 1) {
+            return 1;
+        }
+        else {
+            return n + sum_recursion(n - 1);
+        }
+    }
+    public static int factorial(int n) {
+        if (n == 1) {
+            return 1;
+        }
+        else {
+            return n * factorial(n - 1);
+        }
+    }
+
+    public static int fibonacci(int n) {
+        if (n <= 1) {
+            return n;
+        }
+        else {
+            return fibonacci(n - 1) + fibonacci(n - 2);
+        }
+    }
+
+    public static void wrappedVars() {
+        int myInt = 100;
+        double myDouble = 99.99;
+        boolean myBoolean = true;
+
+        Integer myWrappedInt = myInt;
+        Double myWrappedDouble = myDouble;
+        Boolean myWrappedBoolean = myBoolean;
+
+        System.out.println("\nЗначения примитивных типов:");
+        System.out.println("int: " + myInt);
+        System.out.println("double: " + myDouble);
+        System.out.println("boolean: " + myBoolean);
+
+        System.out.println("\nЗначения объектов-оберток:");
+        System.out.println("Integer: " + myWrappedInt);
+        System.out.println("Double: " + myWrappedDouble);
+        System.out.println("Boolean: " + myWrappedBoolean);
+    }
+
+    /**
+     * Создайте две переменные типа Integer с одинаковыми значениями, инициализированные через автоупаковку
+     * Сравните эти переменные с использованием == и Objects.equals(). Выведите результаты сравнения в консоль
+     * Проделайте это со значениями в диапазоне от -128 и 127 и вне этого диапазона - обратите внимание на разницу, попробуйте найти объяснение этой разницы
+     */
+    public static void checkEquality() {
+        Integer num1 = 100;
+        Integer num2 = 100;
+
+        System.out.println("Сравнение с использованием ==:");
+        System.out.println(num1 == num2);
+
+        System.out.println("Сравнение с использованием Objects.equals():");
+        System.out.println(java.util.Objects.equals(num1, num2));
+
+        Integer num3 = 200;
+        Integer num4 = 200;
+
+        System.out.println("Сравнение с использованием ==:");
+        System.out.println(num3 == num4);
+
+        System.out.println("Сравнение с использованием Objects.equals():");
+        System.out.println(java.util.Objects.equals(num3, num4));
+    }
+
+    /**
+     * Измерье время выполнения операций с примитивом и оберткой (в двух разных методах, например checkTimeWithPrimitive и checkTimeWithWrapper): ...
+     */
+    public static void checkTimeCompletion() {
+        final int count = 100_000_000;
+
+        long startTimePrimitive = System.currentTimeMillis();
+        int sumPrimitive = 0;
+        for (int i = 0; i < count; i++) {
+            sumPrimitive += i;
+        }
+        long endTimePrimitive = System.currentTimeMillis();
+        long durationPrimitive = endTimePrimitive - startTimePrimitive;
+        System.out.println("Время выполнения операции с примитивом int: " + durationPrimitive);
+
+        long startTimeWrapper = System.currentTimeMillis();
+        Integer sumWrapper = 0;
+        for (int i = 0; i < count; i++) {
+            sumWrapper += i;
+        }
+        long endTimeWrapper = System.currentTimeMillis();
+        long durationWrapper = endTimeWrapper - startTimeWrapper;
+        System.out.println("Время выполнения операции с оберткой Integer: " + durationWrapper);
+    }
+
+    /**
+     * Протестируйте переполнение переменных типа Integer и Long путем увеличения максимального значения (константа MAX_VALUE) и уменьшения минимального (константа MIN_VALUE)
+     */
+    public static void valueOverflow() {
+        int maxValue = Integer.MAX_VALUE;
+        int minValue = Integer.MIN_VALUE;
+
+        System.out.println("Максимальное значение Integer до увеличения: " + maxValue);
+        System.out.println("Минимальное значение Integer до уменьшения: " + minValue);
+
+        maxValue++;
+        minValue--;
+
+        System.out.println("Максимальное значение Integer после увеличения: " + maxValue);
+        System.out.println("Минимальное значение Integer после уменьшения: " + minValue);
+
+        long maxLongValue = Long.MAX_VALUE;
+        long minLongValue = Long.MIN_VALUE;
+
+        System.out.println("Максимальное значение Long до увеличения: " + maxLongValue);
+        System.out.println("Минимальное значение Long до уменьшения: " + minLongValue);
+
+        maxLongValue++;
+        minLongValue--;
+
+        System.out.println("Максимальное значение Long после увеличения: " + maxLongValue);
+        System.out.println("Минимальное значение Long после уменьшения: " + minLongValue);
+    }
     static String concat (String[] stringArray) {
         String concatenated = "";
         for (String str : stringArray) {
@@ -221,5 +347,14 @@ public class Main {
         task2();
         System.out.println(task3());
         System.out.println(concat(task4()));
+        System.out.println("Задача 1 (Рекурсия)");
+        System.out.println(sum_recursion(100));
+        System.out.println("Задача 2 (Рекурсия)");
+        System.out.println(factorial(5));
+        System.out.println(fibonacci(10));
+        wrappedVars();
+        checkEquality();
+        checkTimeCompletion();
+        valueOverflow();
     }
 }
